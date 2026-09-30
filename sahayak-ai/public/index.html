@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sahayak AI — Guardian Dashboard | Digital Fraud Protection</title>
+  <meta name="description" content="AI-powered cyber-threat guardian shielding senior citizens from WhatsApp and digital financial fraud.">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- ── Header ── -->
+    <header class="app-header">
+      <div class="brand-section">
+        <div class="brand-logo">🛡️</div>
+        <div class="brand-text">
+          <h1>Sahayak <span class="highlight">AI</span> <small style="font-size: 14px; color: var(--text-dim); font-weight: normal;">| सहायक एआई</small></h1>
+          <p class="brand-tagline">Elder Fraud Defense & Caregiver Telemetry Center</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="status-pill" id="system-status-pill">
+          <span class="pulse-dot"></span>
+          <span id="system-status-text">Connecting...</span>
+        </div>
+        <button class="btn btn-secondary" id="open-seniors-btn">
+          <span>👥</span> Protected Seniors
+        </button>
+        <button class="btn btn-primary" id="open-register-btn">
+          <span>➕</span> Register Senior
+        </button>
+      </div>
+    </header>
+
+    <!-- ── Stat Cards ── -->
+    <section class="stats-grid" id="stats-section">
+      <div class="stat-card" style="border-top: 3px solid #6366f1;">
+        <div class="stat-header">
+          <span class="stat-label">Total Intercepts</span>
+          <span class="stat-icon">📡</span>
+        </div>
+        <div class="stat-value" id="stat-total-reports">--</div>
+        <div class="stat-subtext">
+          <span id="stat-last24h">--</span> in last 24 hours
+        </div>
+      </div>
+
+      <div class="stat-card critical">
+        <div class="stat-header">
+          <span class="stat-label">Critical Scams Blocked</span>
+          <span class="stat-icon">🚨</span>
+        </div>
+        <div class="stat-value" id="stat-critical-count" style="color: #f87171;">--</div>
+        <div class="stat-subtext">High urgency traps thwarted</div>
+      </div>
+
+      <div class="stat-card caregiver">
+        <div class="stat-header">
+          <span class="stat-label">Caregivers Alerted</span>
+          <span class="stat-icon">🔔</span>
+        </div>
+        <div class="stat-value" id="stat-caregivers-count" style="color: #818cf8;">--</div>
+        <div class="stat-subtext">Immediate WhatsApp escalations</div>
+      </div>
+
+      <div class="stat-card safe">
+        <div class="stat-header">
+          <span class="stat-label">Protected Seniors</span>
+          <span class="stat-icon">👵👴</span>
+        </div>
+        <div class="stat-value" id="stat-active-seniors" style="color: #34d399;">--</div>
+        <div class="stat-subtext">Active accounts under watch</div>
+      </div>
+    </section>
+
+    <!-- ── Interactive Console & Analytics Columns ── -->
+    <div class="dashboard-columns">
+      
+      <!-- Column 1: Live Threat Simulator Console -->
+      <section class="panel-card">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>⚡</span>
+            <span>Live Threat Simulator & Scanner</span>
+          </div>
+          <span class="panel-badge">Gemini Flash Multilingual Engine</span>
+        </div>
+
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">
+          Test raw scam payloads, WhatsApp forwards, or phishing links against the multi-model pipeline:
+        </p>
+
+        <!-- Presets -->
+        <div class="simulator-presets">
+          <button class="preset-chip" data-preset="electricity">⚡ Electricity Bill Cutoff</button>
+          <button class="preset-chip" data-preset="digital-arrest">🚨 CBI Digital Arrest</button>
+          <button class="preset-chip" data-preset="jio-lottery">🎁 Jio Lucky Draw 50L</button>
+          <button class="preset-chip" data-preset="sbi-kyc">💳 SBI KYC Expired</button>
+          <button class="preset-chip" data-preset="family-clone">👨‍👦 Grandchild AI Emergency</button>
+        </div>
+
+        <!-- Simulator Form -->
+        <form class="simulator-form" id="simulator-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="sim-senior-phone">Senior Phone (Optional)</label>
+              <input type="text" id="sim-senior-phone" class="form-input" placeholder="+919876543210" value="+919876543210">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="sim-language">Explanation Language</label>
+              <select id="sim-language" class="form-select">
+                <option value="Hindi" selected>Hindi (हिंदी)</option>
+                <option value="English">English</option>
+                <option value="Kannada">Kannada (ಕನ್ನಡ)</option>
+                <option value="Tamil">Tamil (தமிழ்)</option>
+                <option value="Telugu">Telugu (తెలుగు)</option>
+                <option value="Bengali">Bengali (বাংলা)</option>
+                <option value="Marathi">Marathi (मराठी)</option>
+                <option value="Gujarati">Gujarati (ગુજરાતી)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="sim-payload">Message Text / Intercepted Content</label>
+            <textarea id="sim-payload" class="form-textarea" placeholder="Paste incoming WhatsApp message, SMS text, or transcribed voice note..." required></textarea>
+          </div>
+
+          <div style="display: flex; gap: 10px;">
+            <button type="submit" class="btn btn-primary" id="sim-submit-btn" style="flex: 1;">
+              <span>🛡️</span> Run Scam Intelligence Analysis
+            </button>
+            <button type="button" class="btn btn-secondary" id="sim-clear-btn">Clear</button>
+          </div>
+        </form>
+
+        <!-- Live Analysis Output Container -->
+        <div class="analysis-output" id="analysis-output">
+          <div class="output-header">
+            <span class="risk-badge" id="output-risk-badge">CRITICAL (95/100)</span>
+            <span style="font-size: 12px; color: var(--text-dim);" id="output-category-pill">Category: DIGITAL_ARREST</span>
+          </div>
+
+          <div class="output-content">
+            <div class="output-item">
+              <span class="output-item-label">Elder-Friendly Vernacular Advice:</span>
+              <div class="explanation-box" id="output-explanation">--</div>
+            </div>
+
+            <div class="output-item">
+              <span class="output-item-label">Immediate Protective Action:</span>
+              <div class="action-box" id="output-action">--</div>
+            </div>
+          </div>
+
+          <div class="output-footer">
+            <div style="font-size: 12.5px; display: flex; align-items: center; gap: 8px;">
+              <span id="output-caregiver-status">🔔 Caregiver Alert Triggered</span>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="speak-explanation-btn">
+              <span>🔊</span> Listen Audio
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Column 2: Analytics & Threat Distribution -->
+      <section class="panel-card">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>📊</span>
+            <span>Threat Vectors & Distribution</span>
+          </div>
+          <button class="btn btn-secondary btn-sm" id="refresh-stats-btn">
+            <span>🔄</span> Refresh
+          </button>
+        </div>
+
+        <div class="analytics-section">
+          <!-- Category Progress Bars -->
+          <div>
+            <h4 style="font-size: 12px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; letter-spacing: 0.5px;">Top Scam Modalities</h4>
+            <div class="category-bar-group" id="category-bars">
+              <!-- Dynamically populated -->
+              <div style="color: var(--text-dim); font-size: 13px;">Loading analytics...</div>
+            </div>
+          </div>
+
+          <!-- Channel Distribution -->
+          <div>
+            <h4 style="font-size: 12px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; letter-spacing: 0.5px;">Ingestion Channels</h4>
+            <div class="channel-distribution">
+              <div class="channel-card">
+                <div class="channel-icon">💬</div>
+                <div class="channel-count" id="channel-text-count">0</div>
+                <div class="channel-label">WhatsApp Text</div>
+              </div>
+              <div class="channel-card">
+                <div class="channel-icon">🖼️</div>
+                <div class="channel-count" id="channel-image-count">0</div>
+                <div class="channel-label">OCR Screenshot</div>
+              </div>
+              <div class="channel-card">
+                <div class="channel-icon">🎙️</div>
+                <div class="channel-count" id="channel-audio-count">0</div>
+                <div class="channel-label">Voice / Audio</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Architecture & Resilience Info Box -->
+          <div style="padding: 14px; background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: var(--radius-md);">
+            <div style="font-weight: 600; font-size: 13px; color: #818cf8; margin-bottom: 4px;">⚡ Active AI Engine Stack</div>
+            <div style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">
+              Primary: <strong style="color: var(--text-main);">gemini-3.5-flash</strong> • Failover: <strong style="color: var(--text-main);">gemini-3.5-flash-lite</strong> & <strong style="color: var(--text-main);">gemini-3.8-flash</strong> • 12s circuit breaker timeout • Rate-limited at 25 req/min.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ── Live Intercepted Scam Reports Feed ── -->
+    <section class="reports-section">
+      <div class="reports-toolbar">
+        <div class="panel-title">
+          <span>📑</span>
+          <span>Live Scam Interception Logs</span>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="report-search-input" class="search-input" placeholder="Search message text, senior, category...">
+          </div>
+
+          <div class="filter-group">
+            <select id="filter-risk" class="form-select" style="min-width: 140px;">
+              <option value="ALL">All Risk Levels</option>
+              <option value="CRITICAL">🚨 Critical</option>
+              <option value="SUSPICIOUS">⚠️ Suspicious</option>
+              <option value="SAFE">✅ Safe</option>
+            </select>
+
+            <select id="filter-category" class="form-select" style="min-width: 160px;">
+              <option value="ALL">All Categories</option>
+              <option value="DIGITAL_ARREST">Digital Arrest</option>
+              <option value="FAKE_KYC">Fake KYC</option>
+              <option value="UPI_FRAUD">UPI Fraud</option>
+              <option value="LOTTERY">Lottery / Prize</option>
+              <option value="FAMILY_EMERGENCY_CLONE">Family Clone</option>
+              <option value="UNKNOWN">Unknown / Other</option>
+            </select>
+
+            <button class="btn btn-secondary" id="refresh-reports-btn">
+              <span>🔄</span> Refresh
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Senior Profile</th>
+              <th>Threat Level</th>
+              <th>Category</th>
+              <th>Channel</th>
+              <th>Intercepted Message Snippet</th>
+              <th>Caregiver Alert</th>
+              <th>Detected At</th>
+              <th style="text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="reports-table-body">
+            <tr>
+              <td colspan="8" style="text-align: center; color: var(--text-dim); padding: 32px;">
+                Loading live reports...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-container">
+        <div id="pagination-info">Showing page 1 of 1</div>
+        <div class="pagination-controls">
+          <button class="btn btn-secondary btn-sm" id="prev-page-btn" disabled>← Previous</button>
+          <button class="btn btn-secondary btn-sm" id="next-page-btn" disabled>Next →</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ── Modal: Report Details ── -->
+  <div class="modal-overlay" id="report-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-report-title">Threat Report Details</h3>
+        <button class="modal-close" id="close-report-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-report-body">
+        <!-- Injected via JS -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="close-report-modal-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Modal: Manage Seniors ── -->
+  <div class="modal-overlay" id="seniors-modal">
+    <div class="modal-card" style="max-width: 720px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Protected Senior Citizens</h3>
+        <button class="modal-close" id="close-seniors-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <p style="font-size: 13px; color: var(--text-muted);">Seniors enrolled in proactive guardian protection:</p>
+          <button class="btn btn-primary btn-sm" id="switch-to-register-btn">➕ Add Senior</button>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Senior</th>
+                <th>Phone</th>
+                <th>Language</th>
+                <th>Caregiver</th>
+                <th>Caregiver Phone</th>
+              </tr>
+            </thead>
+            <tbody id="seniors-table-body">
+              <tr><td colspan="5" style="text-align: center;">Loading seniors...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="close-seniors-modal-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Modal: Register Senior ── -->
+  <div class="modal-overlay" id="register-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Register Senior Citizen</h3>
+        <button class="modal-close" id="close-register-modal">&times;</button>
+      </div>
+      <form id="register-senior-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="reg-name">Senior Citizen Full Name</label>
+            <input type="text" id="reg-name" class="form-input" placeholder="e.g. Ramesh Chandra Uncle" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="reg-phone">Senior WhatsApp Phone</label>
+              <input type="text" id="reg-phone" class="form-input" placeholder="+919876543210" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-lang">Preferred Language</label>
+              <select id="reg-lang" class="form-select">
+                <option value="Hindi" selected>Hindi (हिंदी)</option>
+                <option value="English">English</option>
+                <option value="Kannada">Kannada (ಕನ್ನಡ)</option>
+                <option value="Tamil">Tamil (தமிழ்)</option>
+                <option value="Telugu">Telugu (తెలుగు)</option>
+                <option value="Bengali">Bengali (বাংলা)</option>
+                <option value="Marathi">Marathi (मराठी)</option>
+                <option value="Gujarati">Gujarati (ગુજરાતી)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="reg-caregiver-name">Caregiver Name</label>
+              <input type="text" id="reg-caregiver-name" class="form-input" placeholder="e.g. Priya (Daughter)" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-caregiver-phone">Caregiver Alert Phone</label>
+              <input type="text" id="reg-caregiver-phone" class="form-input" placeholder="+919123456789" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancel-register-modal-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="save-senior-btn">Register Senior</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Dashboard Script -->
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
